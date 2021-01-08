@@ -1,0 +1,39 @@
+.main {
+    &__search {
+        margin: 10px 0 0 0;
+        display: flex;
+
+        &-input {
+            font-size: 20px;
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+        &-button {
+            font-size: 20px;
+            padding: 10px 15px;
+        }
+    }
+}
+
+.pages {
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .page, .current-page {
+        border: 1px solid #000000;
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    .current-page {
+        border: 2px solid #474747;
+        color: #474747;
+        font-weight: 700;
+    }
+}
