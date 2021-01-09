@@ -12,3 +12,10 @@ export const getRepos = (currentPage, perPage, searchQuery = "stars:%3E1") => {
         dispatch(setRepos(response.data));
     }
 }
+
+export const getCurrentRepository = async (username, repoName, setRepo, setIsFetching) => {
+    setIsFetching(true);
+    const response = await axios.get(`${API_URL}/repos/${username}/${repoName}`);
+    setRepo(response.data);
+    setIsFetching(false);
+}

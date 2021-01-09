@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Repo.scss'
+import { NavLink } from 'react-router-dom';
 
 const Repo = (props) => {
     const repo = props.repo;
@@ -9,12 +10,12 @@ const Repo = (props) => {
     return (
         <div className="repo">
             <div className="repo__header">
-                <div className="repo__name">{repo.name}</div>
+                <div className="repo__name"><NavLink to={`/repository/${repo.owner.login}/${repo.name}`}>{repo.name}</NavLink></div>
                 <div className="repo__stars"> <span className="repo__star-icon">★</span> {repo.stargazers_count}</div>
             </div>
 
             <div className="repo__body">
-                    <div className="repo__item">{repo.description}</div>
+                <div className="repo__item">{repo.description}</div>
 
                 {more && <>
                     <div className="repo__item">date created: {dateCreated.toDateString()}</div>

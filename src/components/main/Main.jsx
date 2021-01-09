@@ -22,8 +22,6 @@ const Main = () => {
 
     createPages(pages, pagesCount, currentPage);
 
-    console.log(`pagesCount: ${pagesCount}, totalcount: ${totalCount}, perPage: ${perPage}, pages: ${pages.length}`)
-
     useEffect(() => {
         dispatch(getRepos(currentPage, perPage, searchValue));
     }, [currentPage]);
@@ -44,14 +42,14 @@ const Main = () => {
                     <CubeSpinner />
             }
 
-            <div className="pages">
+            {!isFetching && <div className="pages">
                 {pages.map((page, index) =>
                     <div
                         key={index}
                         className={currentPage == page ? "current-page" : "page"}
                         onClick={() => dispatch(setCurrentPage(page))}
                     >{page}</div>)}
-            </div>
+            </div>}
         </div>
     )
 }
