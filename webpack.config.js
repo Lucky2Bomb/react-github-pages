@@ -4,10 +4,15 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development",
-    entry: ["@babel/polyfill", "./src/index.jsx"],
+    entry: ["@babel/polyfill", "./src/index.tsx"],
+    // output: {
+    //     path: path.resolve(__dirname, "dist"),
+    //     filename: "[name].[fullhash].js",
+    //     publicPath: "/"
+    // },
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].[fullhash].js",
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[fullhash].js',
         publicPath: "/"
     },
     devServer: {
@@ -15,7 +20,7 @@ module.exports = {
         historyApiFallback: true
     },
     resolve: {
-        extensions: ['.js', '.json', '.jsx']
+        extensions: ['.js', '.json', '.jsx', '.tsx', '.ts']
     },
     plugins: [
         new HTMLWebpackPlugin({ template: "./src/index.html" }),
@@ -50,7 +55,12 @@ module.exports = {
                         presets: ["@babel/preset-react", '@babel/preset-env']
                     }
                 }
-            }
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ],
     }
 }
